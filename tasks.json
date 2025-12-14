@@ -31,7 +31,7 @@
                 "$mksbr = [Microsoft.VisualBasic.Interaction]::InputBox(''Build Release:'', ''IMPORTING MKS PRJ'',''1.0'');",
                 "if( !$rn -or !$n -or !$d -or !$mksbr ) { Write-Host ''Import cancelled due to missing input.''; exit };",
                 "& C:\\LegacyApp\\TD5\\4.4.0\\eclipse_cli\\td5.exe importmks -rn $rn -n $n -d $d/$n -mksbr $mksbr --verbose;",
-                "if(!$?){C:\\LegacyApp\\TD5\\4.4.0\\eclipse_cli\\td5.exe -n $n; exit};",
+                "if(!$?){C:\\LegacyApp\\TD5\\4.4.0\\eclipse_cli\\td5.exe -n $n; exit};"
                 //"code '$d/$n'"
             ],
             "group": {
