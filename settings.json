@@ -3,9 +3,12 @@
 // Description: This file contains user-specific settings for Visual Studio Code.
 // You can customize various aspects of the editor, workbench, and extensions here.
 {
-    //"vim.disableExtension": true, // Disable Vim extension. Uncomment this line to disable the Vim extension when opening VS Code.
+    "vim.disableExtension": true, // Disable Vim extension. Uncomment this line to disable the Vim extension when opening VS Code.
     "telemetry.telemetryLevel": "off",
     "security.workspace.trust.untrustedFiles": "open",
+        "security.allowedUNCHosts": [
+        "vt1.vitesco.com"
+    ],
     // Editor settings.
     "editor.minimap.autohide": true,
     "editor.fontSize": 16,
@@ -13,6 +16,8 @@
     "editor.fontFamily": "Lilex Nerd Font",
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
+    "explorer.openEditors.minVisible": 5,
+    "explorer.confirmPasteNative": false,
     "files.autoSave": "afterDelay",
     // Theme settings.
     "window.commandCenter": true,
@@ -35,30 +40,34 @@
         "*.pdf": "default",
         "*.exe": "default"
     },
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.empty.hint": "hidden",
+    // Python settings.
     "python.defaultInterpreterPath": "C:\\LegacyApp\\Python39\\python.exe",
     "python.analysis.inlayHints.functionReturnTypes": true,
     "python.experiments.enabled": false,
+    "python.analysis.completeFunctionParens": true,
+    "python.languageServer": "Pylance",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.terminal.shellIntegration.enabled": true,
+    "python.analysis.aiCodeActions": {
+        "generateDocstring": true
+    },
+    "jupyter.debugJustMyCode": false,
     "files.associations": {"*.py": "python"},
     "autoDocstring.includeName": true,
     "autoDocstring.customTemplatePath": "D:\\p_ta3\\docstrings_template\\custom_template.txt",
-    "jupyter.debugJustMyCode": false,
-    "notebook.outline.showCodeCells": true,
+    "notebook.outline.showCodeCells": true, 
     // Vim settings.
     "vim.operatorPendingModeKeyBindingsNonRecursive": [],
     "vim.visualstar": true,
-    // PowerShell and terminal settings.
+    // Terminal settings.
     //"terminal.external.windowsExec": "C:\\LegacyApp\\powershell\\pwsh.exe",
     "terminal.explorerKind": "both",
     "terminal.integrated.cursorStyle": "line",
     "terminal.integrated.defaultProfile.windows": "PowerShell",
     "terminal.integrated.accessibleViewFocusOnCommandExecution": false,
-    "powershell.enableReferencesCodeLens": false,
-    "powershell.integratedConsole.startInBackground": true,
-    "powershell.integratedConsole.showOnStartup": false,
-    "powershell.powerShellDefaultVersion": "C:\\LegacyApp\\powershell\\pwsh.exe",
-    "powershell.powerShellAdditionalExePaths": {
-        "Legacy PowerShell": "C:\\LegacyApp\\powershell\\pwsh.exe"
-    },
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
     "terminal.integrated.profiles.windows": {
         "PowerShell": {
             "path": "C:\\LegacyApp\\powershell\\pwsh.exe",
@@ -67,11 +76,18 @@
             "name": "PWSH"
         }
     },
-    // C# settings.
-    "csharp.inlayHints.enableInlayHintsForImplicitObjectCreation": true,
-    "csharp.inlayHints.enableInlayHintsForImplicitVariableTypes": true,
-    "csharp.inlayHints.enableInlayHintsForLambdaParameterTypes": true,
-    "csharp.inlayHints.enableInlayHintsForTypes": true,
+    // PowerShell settings.
+    "powershell.codeFormatting.autoCorrectAliases": true,
+    "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
+    "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+    "powershell.codeFormatting.useConstantStrings": true,
+    "powershell.enableReferencesCodeLens": false,
+    "powershell.integratedConsole.startInBackground": true,
+    "powershell.integratedConsole.showOnStartup": false,
+    "powershell.powerShellDefaultVersion": "C:\\LegacyApp\\powershell\\pwsh.exe",
+    "powershell.powerShellAdditionalExePaths": {
+        "Legacy PowerShell": "C:\\LegacyApp\\powershell\\pwsh.exe"
+    }, 
     // Git/GitHub/GitLens settings.
     "git.autofetch": true,
     "git.confirmSync": false,
@@ -81,12 +97,18 @@
     "git.ignoreSubmodules": false,
     "gitlens.ai.model": "vscode",
     "gitlens.ai.vscode.model": "copilot:gpt-3.5-turbo",
+    "github.copilot.enable": {
+        "plaintext": true,
+        "markdown": true
+    },
+    "github.copilot.advanced": {
+        "authProvider": "github"
+    },
     "gitlens.gitCommands.skipConfirmations": [
         "fetch:command",
         "stash-push:command",
         "switch:command"
     ],
-    "C_Cpp.default.compilerPath": "C:\\LegacyApp\\mingw64_630\\bin\\gcc.exe",
     "gitlens.views.scm.grouped.views": {
         "commits": true,
         "branches": true,
@@ -99,32 +121,20 @@
         "searchAndCompare": false,
         "launchpad": false
     },
-    "python.analysis.aiCodeActions": {
-        "generateDocstring": true
+    // C Extension settings.
+    "C_Cpp.vcFormat.newLine.scopeBracesOnSeparateLines": false,
+    "[c]": {
+        "editor.wordBasedSuggestions": "off",
+        "editor.semanticHighlighting.enabled": true,
+        "editor.stickyScroll.defaultModel": "foldingProviderModel",
+        "editor.suggest.insertMode": "replace"
     },
-    "python.analysis.completeFunctionParens": true,
-    "python.languageServer": "Pylance",
-    "python.terminal.activateEnvInCurrentTerminal": true,
-    "python.terminal.shellIntegration.enabled": true,
-    "terminal.integrated.enableMultiLinePasteWarning": "never",
-    "powershell.codeFormatting.autoCorrectAliases": true,
-    "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
-    "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
-    "powershell.codeFormatting.useConstantStrings": true,
-    "explorer.openEditors.minVisible": 5,
-    "explorer.confirmPasteNative": false,
-    "git.openRepositoryInParentFolders": "always",
-    "RunPs1Command.scripts": [
-        {
-            "label": "[TD5] Import MKS",
-            "command": "C:\\LegacyApp\\TD5\\4.4.0\\eclipse_cli\\td5.exe -?",
-            "terminal": true
-        }
-    ],
+    "C_Cpp.default.compilerPath": "C:\\LegacyApp\\mingw64_630\\bin\\gcc.exe",
+    // Other configurations.
+    "diffEditor.renderSideBySide": true,
+    "diffEditor.ignoreTrimWhitespace": true,
     "debug.onTaskErrors": "debugAnyway",
-    "security.allowedUNCHosts": [
-        "vt1.vitesco.com"
-    ],
+    // Personal Configuration
     "run-with.Main_Configuration": {
         "xml":[
             {"alias":"Altova","cmd":"C:\\LegacyApp\\Altova\\Authentic2006\\AUTHENTIC.exe"},
@@ -143,23 +153,5 @@
         ],
         "ps1": [{"alias": "Run Pwsh","cmd": "powershell.exe"}],
         "bat": [{"alias": "Run Cmd","cmd": "cmd.exe"}]
-    },
-    "github.copilot.enable": {
-        "plaintext": true,
-        "markdown": true
-    },
-    "github.copilot.advanced": {
-        "authProvider": "github"
-    },
-    "C_Cpp.vcFormat.newLine.scopeBracesOnSeparateLines": false,
-    "[c]": {
-        "editor.wordBasedSuggestions": "off",
-        "editor.semanticHighlighting.enabled": true,
-        "editor.stickyScroll.defaultModel": "foldingProviderModel",
-        "editor.suggest.insertMode": "replace"
-    },
-    "diffEditor.renderSideBySide": true,
-    "diffEditor.ignoreTrimWhitespace": true,
-    "workbench.editor.enablePreview": false,
-    "workbench.editor.empty.hint": "hidden",
+    }
 }
