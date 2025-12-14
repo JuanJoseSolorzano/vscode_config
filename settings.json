@@ -1,0 +1,165 @@
+// Author: Solorzano, Juan Jose
+// Date: 22/03/2025
+// Description: This file contains user-specific settings for Visual Studio Code.
+// You can customize various aspects of the editor, workbench, and extensions here.
+{
+    //"vim.disableExtension": true, // Disable Vim extension. Uncomment this line to disable the Vim extension when opening VS Code.
+    "telemetry.telemetryLevel": "off",
+    "security.workspace.trust.untrustedFiles": "open",
+    // Editor settings.
+    "editor.minimap.autohide": true,
+    "editor.fontSize": 16,
+    "editor.accessibilitySupport": "off",
+    "editor.fontFamily": "Lilex Nerd Font",
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "files.autoSave": "afterDelay",
+    // Theme settings.
+    "window.commandCenter": true,
+    "window.menuBarVisibility": "compact",
+    "workbench.layoutControl.enabled": false,
+    "workbench.startupEditor": "none",
+    "workbench.sideBar.location": "right",
+    "workbench.colorCustomizations": {
+        "terminal.background": "#1f1f1f",
+        "terminal.foreground": "#14da3f",
+        "statusBar.background": "#1f1f1f",
+        "statusBar.noFolderBackground": "#1f1f1f",
+        "statusBar.debuggingBackground": "#2ebb12",
+        "statusBar.foreground": "#a0d622"
+    },
+    // Testing some settings (not sure if they work).
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "*.xml": "workbench.editorinputs.searchEditorInput",
+        "*.pdf": "default",
+        "*.exe": "default"
+    },
+    "python.defaultInterpreterPath": "C:\\LegacyApp\\Python39\\python.exe",
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.experiments.enabled": false,
+    "files.associations": {"*.py": "python"},
+    "autoDocstring.includeName": true,
+    "autoDocstring.customTemplatePath": "D:\\p_ta3\\docstrings_template\\custom_template.txt",
+    "jupyter.debugJustMyCode": false,
+    "notebook.outline.showCodeCells": true,
+    // Vim settings.
+    "vim.operatorPendingModeKeyBindingsNonRecursive": [],
+    "vim.visualstar": true,
+    // PowerShell and terminal settings.
+    //"terminal.external.windowsExec": "C:\\LegacyApp\\powershell\\pwsh.exe",
+    "terminal.explorerKind": "both",
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.accessibleViewFocusOnCommandExecution": false,
+    "powershell.enableReferencesCodeLens": false,
+    "powershell.integratedConsole.startInBackground": true,
+    "powershell.integratedConsole.showOnStartup": false,
+    "powershell.powerShellDefaultVersion": "C:\\LegacyApp\\powershell\\pwsh.exe",
+    "powershell.powerShellAdditionalExePaths": {
+        "Legacy PowerShell": "C:\\LegacyApp\\powershell\\pwsh.exe"
+    },
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "path": "C:\\LegacyApp\\powershell\\pwsh.exe",
+            "args": [],
+            "icon": "terminal-powershell",
+            "name": "PWSH"
+        }
+    },
+    // C# settings.
+    "csharp.inlayHints.enableInlayHintsForImplicitObjectCreation": true,
+    "csharp.inlayHints.enableInlayHintsForImplicitVariableTypes": true,
+    "csharp.inlayHints.enableInlayHintsForLambdaParameterTypes": true,
+    "csharp.inlayHints.enableInlayHintsForTypes": true,
+    // Git/GitHub/GitLens settings.
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "git.autofetchPeriod": 300,
+    "git.detectSubmodules": true,
+    "git.ignoreSubmodules": false,
+    "gitlens.ai.model": "vscode",
+    "gitlens.ai.vscode.model": "copilot:gpt-3.5-turbo",
+    "gitlens.gitCommands.skipConfirmations": [
+        "fetch:command",
+        "stash-push:command",
+        "switch:command"
+    ],
+    "C_Cpp.default.compilerPath": "C:\\LegacyApp\\mingw64_630\\bin\\gcc.exe",
+    "gitlens.views.scm.grouped.views": {
+        "commits": true,
+        "branches": true,
+        "remotes": true,
+        "stashes": true,
+        "tags": true,
+        "worktrees": true,
+        "contributors": true,
+        "repositories": true,
+        "searchAndCompare": false,
+        "launchpad": false
+    },
+    "python.analysis.aiCodeActions": {
+        "generateDocstring": true
+    },
+    "python.analysis.completeFunctionParens": true,
+    "python.languageServer": "Pylance",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.terminal.shellIntegration.enabled": true,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "powershell.codeFormatting.autoCorrectAliases": true,
+    "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
+    "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+    "powershell.codeFormatting.useConstantStrings": true,
+    "explorer.openEditors.minVisible": 5,
+    "explorer.confirmPasteNative": false,
+    "git.openRepositoryInParentFolders": "always",
+    "RunPs1Command.scripts": [
+        {
+            "label": "[TD5] Import MKS",
+            "command": "C:\\LegacyApp\\TD5\\4.4.0\\eclipse_cli\\td5.exe -?",
+            "terminal": true
+        }
+    ],
+    "debug.onTaskErrors": "debugAnyway",
+    "security.allowedUNCHosts": [
+        "vt1.vitesco.com"
+    ],
+    "run-with.Main_Configuration": {
+        "xml":[
+            {"alias":"Altova","cmd":"C:\\LegacyApp\\Altova\\Authentic2006\\AUTHENTIC.exe"},
+            {"alias":"InfoPath","cmd":"C:\\Program Files\\Microsoft Office\\Office15\\INFOPATH.EXE"}
+        ],
+        "tex" : [{"alias":"TestExecutor","cmd":"C:\\LegacyApp\\TestExecutor\\TestExecutor.exe"}],
+        "html": [
+            {
+                "alias": "Chrome",
+                "cmd": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+            },
+            {
+                "alias": "Edge",
+                "cmd": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
+            }
+        ],
+        "ps1": [{"alias": "Run Pwsh","cmd": "powershell.exe"}],
+        "bat": [{"alias": "Run Cmd","cmd": "cmd.exe"}]
+    },
+    "github.copilot.enable": {
+        "plaintext": true,
+        "markdown": true
+    },
+    "github.copilot.advanced": {
+        "authProvider": "github"
+    },
+    "C_Cpp.vcFormat.newLine.scopeBracesOnSeparateLines": false,
+    "[c]": {
+        "editor.wordBasedSuggestions": "off",
+        "editor.semanticHighlighting.enabled": true,
+        "editor.stickyScroll.defaultModel": "foldingProviderModel",
+        "editor.suggest.insertMode": "replace"
+    },
+    "diffEditor.renderSideBySide": true,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.empty.hint": "hidden",
+}

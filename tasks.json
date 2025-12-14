@@ -1,0 +1,222 @@
+// Copyright (c) 2025 Vitesco/Schaeffler Group. All rights reserved.
+// Author: Juan Jose Solorzano (uiv06924)
+// Email: juan.jose.solorzano.carrillo@vitesco.com
+// Date: 07/03/2025
+// Description: VS Code workspace configuration for VVMAL projects.
+// This workspace enables streamlined import, build, clean, export, and file copy operations
+// for VVMAL projects using TD5 tooling.
+//------------------------------------------------------------------------------------------------------
+// Requirements:
+//   - TD5 CLI: C:/LegacyApp/TD5/4.4.0/eclipse_cli/td5.exe
+//   - (Recommended) C/C++ Extension Pack for enhanced C/C++ development.
+//=====================================================================================================
+
+{
+    "version": "2.0.0",
+    "tasks": [
+        // Import MKS Project
+        {
+            "type": "shell",
+            "label": "[TD5] Import MKS Project",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                "Add-Type -AssemblyName Microsoft.VisualBasic;",
+                "$rn = [Microsoft.VisualBasic.Interaction]::InputBox(''MKS Release:'', ''IMPORTING MKS PRJ'');",
+                "$n = [Microsoft.VisualBasic.Interaction]::InputBox(''Project Name:'', ''IMPORTING MKS PRJ'');",
+                "$d = [Microsoft.VisualBasic.Interaction]::InputBox(''Target Directory:'', ''IMPORTING MKS PRJ'',''D:/p/'');",
+                "$mksbr = [Microsoft.VisualBasic.Interaction]::InputBox(''Build Release:'', ''IMPORTING MKS PRJ'',''1.0'');",
+                "if( !$rn -or !$n -or !$d -or !$mksbr ) { Write-Host ''Import cancelled due to missing input.''; exit };",
+                "& C:\\LegacyApp\\TD5\\4.4.0\\eclipse_cli\\td5.exe importmks -rn $rn -n $n -d $d/$n -mksbr $mksbr --verbose;",
+                "if(!$?){C:\\LegacyApp\\TD5\\4.4.0\\eclipse_cli\\td5.exe -n $n; exit};",
+                //"code '$d/$n'"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "IMPORT MKS",
+            "presentation": {
+                "echo": true,
+                "focus": true
+            },
+            "problemMatcher": []
+        },
+        // Import FS Project from current folder
+        {
+            "type": "cppbuild",
+            "label": "[TD5] Import FS Project",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                "cls;",
+                "Add-Type -AssemblyName Microsoft.VisualBasic;",
+                "$rn = [Microsoft.VisualBasic.Interaction]::InputBox('FS Release:', 'IMPORTING FS PRJ','FS_${workspaceFolderBasename}_VVMAL');",
+                "$d = '${workspaceFolder}';",
+                "$i = '${workspaceFolder}';",
+                "& C:\\LegacyApp\\TD5\\4.4.0\\eclipse_cli\\td5.exe importfs -rn $rn -d $d -i $i;",
+                "code $d"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "IMPORT FS",
+            "presentation": {
+                "echo": true,
+                "focus": true
+            },
+            "problemMatcher": []
+        },
+        // Delete Project from TD5 and remove folder
+        {
+            "type": "shell",
+            "label": "[TD5] Delete Project",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "Add-Type -AssemblyName Microsoft.VisualBasic;",
+                "$usrInput = [Microsoft.VisualBasic.Interaction]::InputBox(''Enter the project name:'', ''DELETE TD5 PRJ'', ''${workspaceFolderBasename}'');",
+                "if ($usrInput) {& C:/LegacyApp/TD5/4.4.0/eclipse_cli/td5.exe deleteprj -n $usrInput -c} else {Write-Host ''Project deletion cancelled.'';}",
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "focus": true,
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "DELETE PRJ"
+        },
+        // Delete Current Project
+        {
+            "type": "cppbuild",
+            "label": "[TD5] Delete Current Project",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "$prj = '${workspaceFolderBasename}';",
+                "& C:/LegacyApp/TD5/4.4.0/eclipse_cli/td5.exe deleteprj -n $prj;",
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "focus": true,
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "DELETE CURRENT PRJ"
+        },
+        // Clean Project
+        {
+            "type": "cppbuild",
+            "label": "[TD5] Clean Project",
+            "command": "C:/LegacyApp/TD5/4.4.0/eclipse_cli/td5.exe",
+            "args": [
+                "clean",
+                "-n", // -n = project name
+                "${workspaceFolderBasename}",
+                "-t", // -t = target name
+                "FS_GMG56_11",
+                "-y", // -y = build type
+                "NORMAL"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "CLEAN"
+        },
+        // Build Project
+        {
+            "type": "cppbuild",
+            "label": "[TD5] Build Project",
+            "command": "C:/LegacyApp/TD5/4.4.0/eclipse_cli/td5.exe",
+            "args": [
+                "buildprj",
+                "-n", // -n = project name
+                "${workspaceFolderBasename}",
+                "-t", // -t = target name
+                "FS_GMG56_11",
+                "-y", // -y = build type
+                "NORMAL",
+                "-r", // -r = rule
+                "All"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "BUILD"
+        },
+        // List TD5 Projects
+        {
+            "type": "shell",
+            "label": "[TD5] List Projects",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                "Write-Host 'Looking  for TD5 projects ....';",
+                "$output = & C:/LegacyApp/TD5/4.4.0/eclipse_cli/td5.exe listprj | ForEach-Object {if($_.Contains(''#'') -or $_.Contains(''~'')){$_} };",
+                "Write-Host '============================================= PROJECTS ======================================================';",
+                "if ($output) {$output} else {Write-Host 'No TD5 projects found.'};",
+                "Write-Host '=============================================================================================================';",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "LIST"
+        },
+        // Create .code-workspace file
+        {
+            "type": "shell",
+            "label": "[TD5] Create .code-workspace",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                "$dir = (Get-ChildItem | Where-Object {$_.Name -eq \"\"\"work\"\"\"});",
+                "if( !$dir ) {Write-Host 'No work directory found.'; exit};",
+                "$fileName = ''${workspaceFolderBasename}.code-workspace'';",
+                "$content00 = ''// Copyright (c) 2025 Vitesco/Schaeffler Group. All rights reserved.\n// Author: Juan Jose Solorzano (uiv06924)''\n;",
+                "$content01 = ''// Email: juan.jose.solorzano.carrillo@vitesco.com\n// Date: 07/03/2025\n// Description: VS Code workspace configuration for TD5 projects.\n\n'';",
+                "$content02 = ''{\n \"\"\"settings\"\"\": {\n\t\"\"\"C_Cpp.default.systemIncludePath\"\"\":['';",
+                "$content03 = ''\n\t\"\"\"./**\"\"\",'';",
+                "$content04 = ''\n\t\"\"\"C:/LegacyApp/mingw64_630/include\"\"\",'';",
+                "$content05 = ''\n\t\"\"\"C:/LegacyApp/diab/5.9.6.6-0_a_3_rh/include\"\"\",'';",
+                "$content06 = ''\n\t\"\"\"C:/LegacyApp/diab/5.9.6.6-0_a_3_rh/libraries/include\"\"\",\n],\n},'';",
+                "$content07 = ''\n\t\"\"\"folders\"\"\":[{\"\"\"path\"\"\":\"\"\".\"\"\"}]'';",
+                "$closed = ''\n}'';",
+                "$all = $content00 +$content01 + $content02 + $content03 + $content04 + $content05 + $content06 + $content07 + $closed;",
+                "New-Item -Path . -Name $fileName -ItemType 'File' -Value $all -Force;",
+                "code $fileName;"
+            ],
+            "presentation": {
+                "echo": false,
+                "reveal": "never",
+                "focus": false
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "CREATE WORKSPACE FILE"
+        }
+    ]
+}
