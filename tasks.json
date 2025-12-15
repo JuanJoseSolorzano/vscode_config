@@ -13,7 +13,7 @@
         // Create .code-workspace file
         {
             "type": "shell",
-            "label": "[TD5] Create .code-workspace",
+            "label": "Create .code-workspace",
             "command": "powershell",
             "args": [
                 "-NoProfile",

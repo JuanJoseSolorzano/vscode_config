@@ -3,12 +3,9 @@
 // Description: This file contains user-specific settings for Visual Studio Code.
 // You can customize various aspects of the editor, workbench, and extensions here.
 {
-    "vim.disableExtension": true, // Disable Vim extension. Uncomment this line to disable the Vim extension when opening VS Code.
+    //"vim.disableExtension": true, // Disable Vim extension. Uncomment this line to disable the Vim extension when opening VS Code.
     "telemetry.telemetryLevel": "off",
     "security.workspace.trust.untrustedFiles": "open",
-        "security.allowedUNCHosts": [
-        "vt1.vitesco.com"
-    ],
     // Editor settings.
     "editor.minimap.autohide": true,
     "editor.fontSize": 16,
@@ -18,6 +15,9 @@
     "explorer.confirmDragAndDrop": false,
     "explorer.openEditors.minVisible": 5,
     "explorer.confirmPasteNative": false,
+    "editor.wordWrap": "off",
+    "editor.formatOnSave": false,
+    "editor.tabSize": 4,
     "files.autoSave": "afterDelay",
     // Theme settings.
     "window.commandCenter": true,
@@ -54,10 +54,12 @@
         "generateDocstring": true
     },
     "jupyter.debugJustMyCode": false,
-    "files.associations": {"*.py": "python"},
+    "files.associations": {
+        "*.py": "python"
+    },
     "autoDocstring.includeName": true,
     "autoDocstring.customTemplatePath": "D:\\p_ta3\\docstrings_template\\custom_template.txt",
-    "notebook.outline.showCodeCells": true, 
+    "notebook.outline.showCodeCells": true,
     // Vim settings.
     "vim.operatorPendingModeKeyBindingsNonRecursive": [],
     "vim.visualstar": true,
@@ -87,7 +89,7 @@
     "powershell.powerShellDefaultVersion": "C:\\LegacyApp\\powershell\\pwsh.exe",
     "powershell.powerShellAdditionalExePaths": {
         "Legacy PowerShell": "C:\\LegacyApp\\powershell\\pwsh.exe"
-    }, 
+    },
     // Git/GitHub/GitLens settings.
     "git.autofetch": true,
     "git.confirmSync": false,
@@ -122,13 +124,25 @@
         "launchpad": false
     },
     // C Extension settings.
-    "C_Cpp.vcFormat.newLine.scopeBracesOnSeparateLines": false,
     "[c]": {
         "editor.wordBasedSuggestions": "off",
         "editor.semanticHighlighting.enabled": true,
         "editor.stickyScroll.defaultModel": "foldingProviderModel",
-        "editor.suggest.insertMode": "replace"
+        "editor.suggest.insertMode": "replace",
+        "editor.insertSpaces": true,
+        "editor.indentSize": 4
     },
+    "[cpp]": {
+        "editor.wordBasedSuggestions": "off",
+        "editor.semanticHighlighting.enabled": true,
+        "editor.stickyScroll.defaultModel": "foldingProviderModel",
+        "editor.suggest.insertMode": "replace",
+        "editor.indentSize": 4,
+        "editor.insertSpaces": true 
+    },
+    "C_Cpp.vcFormat.newLine.scopeBracesOnSeparateLines": false,
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, BraceWrapping: { AfterFunction: false } }",
+    "C_Cpp.clang_format_style": "file",
     "C_Cpp.default.compilerPath": "C:\\LegacyApp\\mingw64_630\\bin\\gcc.exe",
     // Other configurations.
     "diffEditor.renderSideBySide": true,
@@ -136,11 +150,22 @@
     "debug.onTaskErrors": "debugAnyway",
     // Personal Configuration
     "run-with.Main_Configuration": {
-        "xml":[
-            {"alias":"Altova","cmd":"C:\\LegacyApp\\Altova\\Authentic2006\\AUTHENTIC.exe"},
-            {"alias":"InfoPath","cmd":"C:\\Program Files\\Microsoft Office\\Office15\\INFOPATH.EXE"}
+        "xml": [
+            {
+                "alias": "Altova",
+                "cmd": "C:\\LegacyApp\\Altova\\Authentic2006\\AUTHENTIC.exe"
+            },
+            {
+                "alias": "InfoPath",
+                "cmd": "C:\\Program Files\\Microsoft Office\\Office15\\INFOPATH.EXE"
+            }
         ],
-        "tex" : [{"alias":"TestExecutor","cmd":"C:\\LegacyApp\\TestExecutor\\TestExecutor.exe"}],
+        "tex": [
+            {
+                "alias": "TestExecutor",
+                "cmd": "C:\\LegacyApp\\TestExecutor\\TestExecutor.exe"
+            }
+        ],
         "html": [
             {
                 "alias": "Chrome",
@@ -151,7 +176,18 @@
                 "cmd": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
             }
         ],
-        "ps1": [{"alias": "Run Pwsh","cmd": "powershell.exe"}],
-        "bat": [{"alias": "Run Cmd","cmd": "cmd.exe"}]
-    }
+        "ps1": [
+            {
+                "alias": "Run Pwsh",
+                "cmd": "powershell.exe"
+            }
+        ],
+        "bat": [
+            {
+                "alias": "Run Cmd",
+                "cmd": "cmd.exe"
+            }
+        ]
+    },
+    "github.copilot.selectedCompletionModel": "gpt-41-copilot"
 }
